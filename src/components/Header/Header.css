@@ -4,4 +4,98 @@
   background-image: url(../../assets/header.jpg);
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-text,
+.right-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.right-text {
+  align-items: end;
+}
+
+.left-text span:first-child {
+  color: white;
+  font-size: 60px;
+}
+
+.left-text span:nth-child(2) {
+  color: red;
+  font-size: 50px;
+}
+.right-text span:first-child {
+  color: red;
+  font-size: 60px;
+}
+
+.right-text span:nth-child(2) {
+  color: white;
+  font-size: 50px;
+}
+
+.gif {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.animated-text {
+  position: absolute;
+  top: 450px;
+}
+.animated-text2 {
+  position: absolute;
+  top: 470px;
+}
+
+.animated-text span {
+  color: red;
+}
+.animated-text2 span {
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .header-content {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .left-text span,
+  .right-text span {
+    font-size: 30px !important;
+  }
+  .gif {
+    width: 80px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-content {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .left-text span,
+  .right-text span {
+    font-size: 20px !important;
+  }
+  .gif {
+    width: 60px;
+    height: 15px;
+  }
 }

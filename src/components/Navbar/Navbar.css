@@ -3,6 +3,7 @@
   width: 100%;
   position: absolute;
   height: 70px;
+  z-index: 3;
 }
 
 .navbar {
@@ -109,4 +110,11 @@
   font-size: 12px;
   position: relative;
   padding-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 100% !important;
+    padding: 10px;
+  }
 }
