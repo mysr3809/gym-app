@@ -4,23 +4,31 @@ import logo from "../../assets/fitness.jpeg";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if the page has been scrolled more than 10px
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
       }
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener on component unmount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <div className={`navbar-container ${isScrolled ? "scrolled" : ""}`}>
@@ -32,7 +40,7 @@ const Navbar = () => {
             <p>Club</p>
           </div>
         </div>
-        <div className="links">
+        <div className={`links ${isMobileMenuOpen ? "open" : ""}`}>
           <ul className="nav-links">
             <li>Home</li>
             <li>About</li>
@@ -41,11 +49,19 @@ const Navbar = () => {
             <li>Contact</li>
           </ul>
         </div>
-        <div className="auth-container">
+        <div className={`auth-container ${isMobileMenuOpen ? "open" : ""}`}>
           <ul className="auth-links">
             <li>Login</li>
             <li>Register</li>
           </ul>
+        </div>
+        <div
+          className={`menu-icon ${isMobileMenuOpen ? "open" : ""}`}
+          onClick={toggleMobileMenu}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
     </div>
