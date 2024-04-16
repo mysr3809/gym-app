@@ -16,12 +16,14 @@
   left: 50%;
   top: 0%;
   transform: translate(-50%, 0%);
+  padding: 10px 0;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 0 10px;
 }
 
 .logo {
